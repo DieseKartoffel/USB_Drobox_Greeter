@@ -1,14 +1,40 @@
+from os.path import exists
 import sys
-import usb.core
-import usb.backend.libusb1
+import os
+import time
 
-backend = usb.backend.libusb1.get_backend(find_library=lambda x: "./libusb-1.0.20.7/MS64/dll/libusb-1.0.dll")
-if not backend:
-    print("bye")
-dev = usb.core.find(backend=backend)
-# find USB devices
-dev = usb.core.find(find_all=True)
-# loop through devices, printing vendor and product ids in decimal and hex
-for cfg in dev:
-  sys.stdout.write('Decimal VendorID=' + str(cfg.idVendor) + ' & ProductID=' + str(cfg.idProduct) + '\n')
-  sys.stdout.write('Hexadecimal VendorID=' + hex(cfg.idVendor) + ' & ProductID=' + hex(cfg.idProduct) + '\n\n')
+
+FOLDER_NAME = "Citavi"      #name of the folder that is synchronized from the new drive to Dropbox
+TICK_SPEED = 5               #pause before scanning for a new drive in seconds
+
+def drives():
+    drive_list = []
+    for drive in range(ord('A'), ord('N')):
+        if exists(chr(drive) + ':'):
+            drive_list.append(chr(drive))
+    return drive_list
+
+def dropbox(drive):
+    ls = os.listdir(drive+":\\") #A:\
+    return FOLDER_NAME in ls
+
+def synchDropbox(drive):
+    ls = os.listdir(drive+":\\"+FOLDER_NAME)
+    print(ls)
+
+before = drives()
+while True:
+    time.sleep(TICK_SPEED)
+    after = drives()
+    newDrives = [value for value in after if not value in before]
+    if (newDrives):
+        sys.stdout.write("New Drives added: " + str(newDrives) + "\n")
+        for d in newDrives:
+            if(dropbox(d)):
+                synchDropbox(d)
+    else:
+        sys.stdout.write("No new drive\n")
+    sys.stdout.flush()
+    before = after;
+
+print("The following drives exist:", drives2())
