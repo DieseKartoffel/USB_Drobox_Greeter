@@ -178,7 +178,7 @@ def stopwatch(message):
         print('Total elapsed time for %s: %.3f' % (message, t1 - t0))
 
 if __name__ == '__main__':
-'''    dir = 'E'
+    '''    dir = 'E'
     synchDropbox(dir)'''
 
     before = drives()
