@@ -4,7 +4,10 @@ import os
 import time
 import dropbox
 
-
+# Add OAuth2 access token here.
+# You can generate one for yourself in the App Console.
+# See https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/
+TOKEN = ''
 FOLDER_NAME = "Citavi"      #name of the folder that is synchronized from the new drive to Dropbox
 TICK_SPEED = 5              #pause before scanning for a new drive in seconds
 
@@ -25,6 +28,7 @@ def synchDropbox(drive):
 
 before = drives()
 while True:
+    print (os.environ["DEBUSSY"])
     time.sleep(TICK_SPEED)
     after = drives()
     newDrives = [value for value in after if not value in before]
