@@ -2,10 +2,11 @@ from os.path import exists
 import sys
 import os
 import time
+import dropbox
 
 
 FOLDER_NAME = "Citavi"      #name of the folder that is synchronized from the new drive to Dropbox
-TICK_SPEED = 5               #pause before scanning for a new drive in seconds
+TICK_SPEED = 5              #pause before scanning for a new drive in seconds
 
 def drives():
     drive_list = []
