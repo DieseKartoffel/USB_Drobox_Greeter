@@ -28,7 +28,6 @@ def synchDropbox(drive):
 
 before = drives()
 while True:
-    print (os.environ["DEBUSSY"])
     time.sleep(TICK_SPEED)
     after = drives()
     newDrives = [value for value in after if not value in before]
