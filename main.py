@@ -11,15 +11,12 @@ import unicodedata
 
 
 import dropbox
-import config #local access token file
+import config #local access token and settings file
 
-# Add OAuth2 access token here.
-# You can generate one for yourself in the App Console.
-# See https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/
 TOKEN = config.TOKEN
-FOLDER_NAME_DRIVE = "Dropbox"      #name of the folder that is synchronized from the new drive to Dropbox
-FOLDER_NAME_DROPBOX = "USB_Drive"
-TICK_SPEED = 5              #pause before scanning for a new drive in seconds
+FOLDER_NAME_DRIVE = config.USB_FOLDER    #name of the folder that is synchronized from the new drive to Dropbox
+FOLDER_NAME_DROPBOX = config.DROPBOX_FOLDER
+TICK_SPEED = config.REFRESH_TIME  #pause before scanning for a new drive in seconds
 
 def drives():
     drive_list = []
