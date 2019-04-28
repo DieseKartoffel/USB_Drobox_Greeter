@@ -16,7 +16,23 @@ You can generate the Dropbox Access token in the App Console.
 See: https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/
 
 #### 3. Run Script
+##### Manually
 ```
 python main.py
 ```
+##### Run on system start
+Windows:
 
+Open your Startup folder by pressing WIN + R and and type (Starts when your user logs in)
+```
+shell:startup
+```
+Or press WIN + R and and type (Starts when any user logs in)
+```
+shell:common startup
+```
+Place a shortcut to a batch file here with the following content:
+```
+python main.py
+```
+Save it with a .bat extension and you're done.
