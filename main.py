@@ -27,7 +27,7 @@ def drives():
 
 def hasDropbox(drive):
     ls = os.listdir(drive+":\\") #A:\
-    return FOLDER_NAME in ls
+    return FOLDER_NAME_DRIVE in ls
 
 def synchDropbox(drive):
     rootdir = drive+":\\"+FOLDER_NAME_DRIVE
