@@ -23,11 +23,11 @@ python main.py
 ##### Run on system start
 Windows:
 
-Open your Startup folder by pressing WIN + R and and type (Starts when your user logs in)
+Open your Startup folder by pressing WIN + R and and type
 ```
 shell:startup
 ```
-Or press WIN + R and and type (Starts when any user logs in)
+Or if you want the script to also run for any other windows user, press WIN + R and and type
 ```
 shell:common startup
 ```
@@ -35,4 +35,4 @@ Place a shortcut to a batch file here with the following content:
 ```
 python main.py
 ```
-Save it with a .bat extension and you're done.
+Make sure to save the batch file with a .bat extension and you're done.
